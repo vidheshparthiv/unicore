@@ -5,7 +5,6 @@
 A comprehensive Java library for simulating CPU scheduling algorithms and OS operations. Built with Java 21, this library provides realistic simulations of various CPU scheduling strategies used in operating systems.
 
 ---
-
 ## 📁 Project Structure
 
 ```
