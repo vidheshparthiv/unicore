@@ -2,7 +2,7 @@
 
 A comprehensive Java library for simulating CPU scheduling algorithms and Operating System operations. Built with Java 21, this project provides realistic simulations of various CPU scheduling strategies, memory management, and process handling used in modern operating systems.
 
-## 🎯 Project Overview
+##  Project Overview
 
 This library provides a complete simulation framework for:
 - **CPU Scheduling Algorithms** (FCFS, SJF, Round Robin, Priority, Preemptive Priority)
