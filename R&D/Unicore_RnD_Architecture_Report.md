@@ -1,4 +1,4 @@
-# UnirCore
+# Unicore
 ## Unified Java Systems Algorithm & Runtime Library
 ### R&D Architecture and Product Definition Report
 
@@ -6,9 +6,9 @@
 
 ## 1. Product Definition
 
-**UnirCore** is a production-oriented Java library that converts Operating System, concurrency, storage, networking, and system-design algorithms into reusable infrastructure components for real software applications.
+**Unicore** is a production-oriented Java library that converts Operating System, concurrency, storage, networking, and system-design algorithms into reusable infrastructure components for real software applications.
 
-The library will be distributed through **Maven Central**, allowing developers to add UnirCore as a dependency instead of repeatedly implementing common systems mechanisms inside their own projects.
+The library will be distributed through **Maven Central**, allowing developers to add Unicore as a dependency instead of repeatedly implementing common systems mechanisms inside their own projects.
 
 The algorithms themselves are not the primary user interface; they form the internal strategy layer behind configurable components such as schedulers, caches, resource managers, load balancers, memory pools, storage managers, and distributed coordination services.
 
@@ -16,14 +16,14 @@ The algorithms themselves are not the primary user interface; they form the inte
 
 # 2. Core Architectural Idea
 
-UnirCore follows a **Requirement → Resolution → Strategy → Algorithm → Execution → Result** architecture.
+Unicore follows a **Requirement → Resolution → Strategy → Algorithm → Execution → Result** architecture.
 
 ```text
 Developer Application
         │
         ▼
 ┌──────────────────────┐
-│      UnirCore API    │
+│      Unicore API    │
 └──────────┬───────────┘
            │
            ▼
@@ -70,9 +70,9 @@ This structure ensures that **input processing, algorithm selection, execution, 
 
 ---
 
-# 3. What UnirCore Actually Provides
+# 3. What Unicore Actually Provides
 
-| Developer requirement | UnirCore component | Underlying algorithm families |
+| Developer requirement | Unicore component | Underlying algorithm families |
 |---|---|---|
 | Execute application tasks efficiently | `Scheduler` | FCFS, SJF, SRTF, RR, Priority, MLFQ |
 | Execute concurrent workloads safely | `ExecutionEngine` | Synchronization, queues, work stealing |
@@ -141,7 +141,7 @@ The memory subsystem provides controlled allocation and reuse of application-man
 
 It incorporates **First Fit, Best Fit, Worst Fit, Next Fit, Buddy Allocation, and Slab-style allocation**.
 
-UnirCore does not attempt to replace the JVM's internal heap allocator; instead, it provides application-level memory pools and reusable allocation strategies.
+Unicore does not attempt to replace the JVM's internal heap allocator; instead, it provides application-level memory pools and reusable allocation strategies.
 
 **Primary component:** `MemoryPool`.
 
@@ -283,7 +283,7 @@ ResilienceEngine
 Result
 ```
 
-This is where UnirCore becomes a **systems toolkit rather than an algorithm repository**.
+This is where Unicore becomes a **systems toolkit rather than an algorithm repository**.
 
 ---
 
@@ -292,7 +292,7 @@ This is where UnirCore becomes a **systems toolkit rather than an algorithm repo
 The repository should distinguish **public APIs, orchestration, strategies, algorithms, execution, infrastructure, and domain implementations**.
 
 ```text
-unircore/
+unicore/
 │
 ├── api/
 │   ├── scheduler/
@@ -445,7 +445,7 @@ This is the **missing organizational layer** that prevents the repository from b
 
 # 7. Input and Output Control
 
-UnirCore should enforce a common data flow for every subsystem.
+Unicore should enforce a common data flow for every subsystem.
 
 ```text
 APPLICATION INPUT
@@ -481,11 +481,11 @@ The same architecture can support a scheduler, cache, resource manager, storage 
 
 # 8. Strategy Selection Model
 
-UnirCore should support three selection levels.
+Unicore should support three selection levels.
 
 ### Automatic selection
 
-The developer specifies desired behaviour and allows UnirCore to resolve a suitable strategy.
+The developer specifies desired behaviour and allows Unicore to resolve a suitable strategy.
 
 ```java
 Scheduler.auto()
@@ -516,7 +516,7 @@ Strategy SPI
       ↓
 Strategy Registry
       ↓
-UnirCore
+Unicore
 ```
 
 ---
@@ -547,7 +547,7 @@ This allows the orchestration layer to compare available strategies instead of e
 
 # 10. Decision and Explanation Layer
 
-Whenever automatic selection occurs, UnirCore should produce a structured decision record.
+Whenever automatic selection occurs, Unicore should produce a structured decision record.
 
 ```text
 DecisionTrace
@@ -578,7 +578,7 @@ Limited memory
 Retry failed operations
 ```
 
-UnirCore processes this as:
+Unicore processes this as:
 
 ```text
 Requirements
@@ -602,13 +602,13 @@ ResilienceEngine
 Result + Metrics
 ```
 
-The developer writes application logic while UnirCore handles the reusable systems infrastructure.
+The developer writes application logic while Unicore handles the reusable systems infrastructure.
 
 ---
 
-# 12. What Makes UnirCore Useful
+# 12. What Makes Unicore Useful
 
-UnirCore primarily eliminates **repetitive infrastructure implementation**, not business logic.
+Unicore primarily eliminates **repetitive infrastructure implementation**, not business logic.
 
 A project that would otherwise need separate implementations for scheduling, caching, resource allocation, rate limiting, retries, load balancing, and specialized data structures can integrate those capabilities through one consistent Java ecosystem.
 
@@ -618,7 +618,7 @@ The benefit is particularly strong when the same organization maintains several 
 
 # 13. Target Project Categories
 
-| Project | UnirCore usage |
+| Project | Unicore usage |
 |---|---|
 | Spring Boot backend | Scheduling, cache, rate limiting, resilience |
 | API gateway | Load balancing, rate limiting, connection management |
@@ -635,7 +635,7 @@ The benefit is particularly strong when the same organization maintains several 
 
 # 14. Innovation Model
 
-UnirCore's innovation is best represented as a **five-layer engineering model**.
+Unicore's innovation is best represented as a **five-layer engineering model**.
 
 ```text
                  ┌───────────────────────┐
@@ -661,7 +661,7 @@ UnirCore's innovation is best represented as a **five-layer engineering model**.
 
 The differentiating concept is:
 
-> **UnirCore separates developer intent from algorithm implementation and introduces a reusable decision layer between them.**
+> **Unicore separates developer intent from algorithm implementation and introduces a reusable decision layer between them.**
 
 This allows the same application-facing component to use different algorithms without forcing business code to change.
 
@@ -684,7 +684,7 @@ This allows the same application-facing component to use different algorithms wi
 
 # 16. Quality Boundary for the First Release
 
-UnirCore should target a **30–40 day development capacity** while maintaining production-library discipline.
+Unicore should target a **30–40 day development capacity** while maintaining production-library discipline.
 
 The first release should therefore prioritize:
 
@@ -702,7 +702,7 @@ The first release should therefore prioritize:
 # 17. Final Product Structure
 
 ```text
-                         UNIRCORE
+                         UNIcORE
                             │
        ┌────────────────────┼────────────────────┐
        │                    │                    │
@@ -759,13 +759,13 @@ The first release should therefore prioritize:
 
 ---
 
-# 18. UnirCore's Intended Position
+# 18. Unicore's Intended Position
 
-**UnirCore is not an OS-algorithm repository.**
+**Unicore is not an OS-algorithm repository.**
 
-**UnirCore is not a textbook implementation package.**
+**Unicore is not a textbook implementation package.**
 
-**UnirCore is a Java systems infrastructure layer where established OS and systems algorithms become reusable, configurable, composable, and observable runtime capabilities.**
+**Unicore is a Java systems infrastructure layer where established OS and systems algorithms become reusable, configurable, composable, and observable runtime capabilities.**
 
 The fundamental architecture is:
 
